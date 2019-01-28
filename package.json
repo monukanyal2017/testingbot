@@ -1,0 +1,21 @@
+{
+  "name": "mkbot",
+  "version": "0.0.1",
+  "description": "its a messager bot sample",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "messenger",
+    "bot",
+    "quickstart"
+  ],
+  "author": "monukanyal",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.72.0",
+    "express": "*",
+    "body-parser": "*"
+  }
+}
