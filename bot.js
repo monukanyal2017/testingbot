@@ -54,6 +54,7 @@ app.post('/webhook', function (req, res) {
           console.log("Webhook received unknown event: ", event);
         }
       });
+
     });
 
     // Assume all went well.
@@ -63,6 +64,8 @@ app.post('/webhook', function (req, res) {
     // will time out and we will keep trying to resend.
     res.sendStatus(200);
   }
+
+
 });
 
 // Incoming events handling
@@ -88,6 +91,9 @@ function receivedMessage(event) {
       case 'generic':
         sendGenericMessage(senderID);
         break;
+      case 'Monu kanyal':
+          sendownermessage(senderID);
+      break;
 
       default:
         sendTextMessage(senderID, messageText);
@@ -129,6 +135,21 @@ function sendTextMessage(recipientId, messageText) {
 
   callSendAPI(messageData);
 }
+
+
+function  sendownermessage(senderID){
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: 'Monu kanyal is our owner'
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
 
 function sendGenericMessage(recipientId) {
   var messageData = {
