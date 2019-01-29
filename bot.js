@@ -96,6 +96,10 @@ function receivedMessage(event) {
           sendownermessage(senderID);
       break;
 
+      case 'Jokes':
+           Getjoke(senderID);
+      break;
+
       default:
         sendTextMessage(senderID, messageText);
     }
@@ -217,6 +221,41 @@ function callSendAPI(messageData) {
       console.error("Unable to send message.");
       console.error(response);
       console.error(error);
+    }
+  });  
+}
+
+
+function Getjoke(recipientId) {
+  request({
+    uri: 'http://api.icndb.com/jokes/random',
+    method: 'GET',
+  }, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      console.log("JOKES", body);
+      var res=JSON.parse(body);
+      var messageData = {
+        recipient: {
+          id: recipientId
+        },
+        message: {
+          text: res.value.joke
+        }
+      };
+      callSendAPI(messageData);
+    } else {
+      console.error("Unable to send message.");
+      console.error(response);
+      console.error(error);
+      var messageData = {
+        recipient: {
+          id: recipientId
+        },
+        message: {
+          text: 'No joke available!!'
+        }
+      };
+      callSendAPI(messageData);
     }
   });  
 }
