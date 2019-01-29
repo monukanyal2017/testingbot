@@ -91,7 +91,8 @@ function receivedMessage(event) {
       case 'generic':
         sendGenericMessage(senderID);
         break;
-      case 'Monu kanyal':
+
+      case 'Monu':
           sendownermessage(senderID);
       break;
 
@@ -137,7 +138,7 @@ function sendTextMessage(recipientId, messageText) {
 }
 
 
-function  sendownermessage(senderID){
+function  sendownermessage(recipientId){
   var messageData = {
     recipient: {
       id: recipientId
